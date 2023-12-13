@@ -29,6 +29,7 @@ public class RedisRepositoryIntegrationTest {
         String value = "example";
 
         redisRepository.put(key, value);
+        System.out.println("testing put/get");
 
         String retrieved = redisRepository.get(key);
         assertEquals(value, retrieved);
