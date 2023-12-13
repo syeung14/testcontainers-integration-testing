@@ -14,12 +14,15 @@ public class RedisRepositoryIntegrationTest {
     private RedisRepository redisRepository;
 
     @Container
-    private final GenericContainer redis = new GenericContainer(DockerImageName.parse("redis:6.2.6-alpine")).withExposedPorts(6379);
+    private final GenericContainer redis = new GenericContainer(DockerImageName.parse("gchq/accumulo:latest"));
+//    private final GenericContainer redis = new GenericContainer(DockerImageName.parse("redis:6.2.6-alpine")).withExposedPorts(6379);
 
     @BeforeEach
     public void setUp() {
         String host = redis.getHost();
         Integer port = redis.getFirstMappedPort();
+
+        System.out.println(String.format("host %s, port %s", host, port));
         redisRepository = new RedisRepository(host, port);
     }
 
